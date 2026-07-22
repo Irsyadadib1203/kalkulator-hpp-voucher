@@ -98,6 +98,7 @@
                     maximumFractionDigits: 0
                 }).format(number);
             };
+            const roundUpHPP = (value) => Math.ceil(value);
 
             const formatIndonesianDate = (date) => {
                 const days = ['minggu', 'senin', 'selasa', 'rabu', 'kamis', 'jumat', 'sabtu'];
@@ -512,6 +513,7 @@
                                             name="price"
                                             value={formData.price}
                                             onChange={handleInputChange}
+                                            onWheel={(e) => e.target.blur()}
                                             placeholder="Contoh: 95000"
                                             min="1"
                                             className="w-full px-4 py-2 border border-gray-300 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none transition-all"
@@ -525,6 +527,7 @@
                                             name="quantity"
                                             value={formData.quantity}
                                             onChange={handleInputChange}
+                                            onWheel={(e) => e.target.blur()}
                                             placeholder="Contoh: 10"
                                             min="1"
                                             className="w-full px-4 py-2 border border-gray-300 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none transition-all"
@@ -607,7 +610,7 @@
                                                 <div className="space-y-2">
                                                     <div className="flex justify-between text-sm bg-gray-50 p-2 rounded-lg">
                                                         <span className="text-gray-500">HPP Final (Adjusted):</span>
-                                                        <span className="font-bold text-indigo-600">{formatRupiah(item.currentHPP)}</span>
+                                                        <span className="font-bold text-indigo-600">{formatRupiah(roundUpHPP(item.currentHPP))}</span>
                                                     </div>
                                                     <div className="flex justify-between text-sm bg-gray-50 p-2 rounded-lg">
                                                         <span className="text-gray-500">Nilai Stok Aktif:</span>
